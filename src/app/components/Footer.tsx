@@ -15,7 +15,6 @@ export function Footer() {
           alt="Mount Litera Zee School Wagholi Campus Exterior & Signage"
           fill
           className="object-cover object-center"
-          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/80 to-[#111111]" />
       </div>

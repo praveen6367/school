@@ -44,7 +44,6 @@ export function CampusSpacesSection() {
                     fill
                     className="object-cover transition-transform duration-500 hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    unoptimized
                   />
                 </div>
               )}
@@ -60,7 +59,6 @@ export function CampusSpacesSection() {
             fill
             className="object-cover"
             sizes="(max-width: 1440px) 100vw, 1440px"
-            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-4 sm:p-8 lg:p-10">
             <div className="text-white">

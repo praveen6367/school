@@ -94,21 +94,42 @@ export function Hero() {
     "Grade 10",
   ];
 
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  useEffect(() => {
+    // Only load background video on desktop screens (>= 768px) and after the page has rendered
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      const timer = setTimeout(() => {
+        setLoadVideo(true);
+      }, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <section className="relative w-full border-b border-[#E6E2D8] bg-[#FBF9F5] py-10 lg:py-16 overflow-hidden">
-      {/* Ambient Autoplay Background Video with Directional Light Overlay & Poster */}
+      {/* Optimized Hero Visual Background (Preloaded WebP/AVIF Poster + Deferred Desktop Video) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster="/images/home/admissions-open-hero-banner.jpeg"
-          className="w-full h-full object-cover object-center opacity-70"
-        >
-          <source src="/herovideo.mp4" type="video/mp4" />
-        </video>
+        <Image
+          src="/images/home/admissions-open-hero-banner.jpeg"
+          alt="Mount Litera Zee School Wagholi Campus"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-70"
+        />
+        {loadVideo && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            className="hidden md:block absolute inset-0 w-full h-full object-cover object-center opacity-70 transition-opacity duration-1000"
+          >
+            <source src="/herovideo.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F5]/92 via-[#FBF9F5]/60 to-[#FBF9F5]/30" />
       </div>
 
@@ -167,7 +188,6 @@ export function Hero() {
                   fill
                   className="object-cover"
                   sizes="96px"
-                  unoptimized
                 />
               </div>
               <div>

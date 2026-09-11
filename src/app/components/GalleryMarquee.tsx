@@ -29,7 +29,6 @@ export function GalleryMarquee() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 640px) 220px, 340px"
-                unoptimized
               />
             </div>
           ))}
