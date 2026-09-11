@@ -17,17 +17,22 @@ export function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="scroll-mt-24 w-full border-b border-[#E6E2D8] bg-[#FBF9F5] py-16 lg:py-24">
+    <section id="testimonials" className="scroll-mt-24 w-full border-b border-[#E6E2D8] bg-[#FBF9F5] py-12 sm:py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-5xl font-serif text-[#111111] leading-[1.15] mb-12 lg:mb-16">
-          {testimonials.heading}
-        </h2>
+        <div className="max-w-3xl mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif text-[#111111] leading-[1.15] mb-3 sm:mb-4">
+            {testimonials.heading}
+          </h2>
+          <p className="text-sm sm:text-base lg:text-lg text-[#555555] leading-relaxed">
+            {testimonials.subtitle}
+          </p>
+        </div>
 
-        {/* Testimonial Active Display */}
-        <div className="border border-[#E6E2D8] bg-white rounded-3xl overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12">
+        {/* Testimonial Active Display - Pre-reference layout */}
+        <div className="border border-[#E6E2D8] bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12">
           {/* Photo Column */}
-          {/* TODO: replace with real school photography */}
-          <div className="lg:col-span-5 relative min-h-[280px] lg:min-h-[420px] bg-[#EAE6DD] border-b lg:border-b-0 lg:border-r border-[#E6E2D8]">
+          {/* TODO: replace with real school photography / client to supply real parent photos */}
+          <div className="lg:col-span-5 relative min-h-[240px] sm:min-h-[300px] lg:min-h-[420px] bg-[#EAE6DD] border-b lg:border-b-0 lg:border-r border-[#E6E2D8]">
             <Image
               src={testimonials.items[activeIndex].image}
               alt={testimonials.items[activeIndex].author}
@@ -39,10 +44,10 @@ export function Testimonials() {
           </div>
 
           {/* Quote Column */}
-          <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-between">
+          <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
             <div>
               {/* Cloned SVG Quote Mark */}
-              <div className="text-[#2A60E4] mb-6">
+              <div className="text-[#2A60E4] mb-4 sm:mb-6">
                 <svg width="24" height="20" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M13 2.32394C11.758 2.70423 10.5573 3.76056 10.5573 5.95774V6.67606H12.9586V12H7.82484V6.46479C7.82484 2.15493 10.2261 0.25352 13 0V2.32394ZM5.17516 2.32394C3.93312 2.70423 2.73248 3.76056 2.73248 5.95774V6.67606H5.13376V12H0V6.46479C0 2.15493 2.40127 0.25352 5.17516 0V2.32394Z"
@@ -52,29 +57,29 @@ export function Testimonials() {
               </div>
 
               {/* Quote Text */}
-              <blockquote className="text-base sm:text-lg lg:text-xl font-serif text-[#111111] leading-relaxed font-normal mb-8">
+              <blockquote className="text-base sm:text-lg lg:text-xl font-serif text-[#111111] leading-relaxed font-normal mb-6 sm:mb-8">
                 “{testimonials.items[activeIndex].quote}”
               </blockquote>
             </div>
 
             {/* Author + Controls Footer */}
-            <div className="pt-6 border-t border-[#E6E2D8] flex items-center justify-between">
-              <div>
-                <div className="font-serif text-base sm:text-lg font-bold text-[#111111]">
+            <div className="pt-5 sm:pt-6 border-t border-[#E6E2D8] flex items-center justify-between gap-4">
+              <div className="min-w-0 pr-2">
+                <div className="font-serif text-sm sm:text-lg font-bold text-[#111111] truncate">
                   {testimonials.items[activeIndex].author}
                 </div>
-                <div className="text-xs sm:text-sm text-[#666666] mt-0.5">
+                <div className="text-xs sm:text-sm text-[#666666] mt-0.5 truncate">
                   {testimonials.items[activeIndex].role}
                 </div>
               </div>
 
               {/* Arrow Controls */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   suppressHydrationWarning
                   type="button"
                   onClick={prev}
-                  className="w-10 h-10 rounded-full border border-[#E6E2D8] flex items-center justify-center hover:bg-[#FBF9F5] hover:border-black transition-colors"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E6E2D8] flex items-center justify-center hover:bg-[#FBF9F5] hover:border-black transition-colors cursor-pointer"
                   aria-label="Previous Testimonial"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,7 +90,7 @@ export function Testimonials() {
                   suppressHydrationWarning
                   type="button"
                   onClick={next}
-                  className="w-10 h-10 rounded-full border border-[#E6E2D8] flex items-center justify-center hover:bg-[#FBF9F5] hover:border-black transition-colors"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E6E2D8] flex items-center justify-center hover:bg-[#FBF9F5] hover:border-black transition-colors cursor-pointer"
                   aria-label="Next Testimonial"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

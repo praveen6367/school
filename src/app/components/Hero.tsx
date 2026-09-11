@@ -1,20 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { siteContent } from "../content";
 
 export function Hero() {
   const { hero } = siteContent;
 
   const [formData, setFormData] = useState({
-    studentName: "",
-    grade: "Nursery",
     parentName: "",
     phone: "",
     email: "",
-    address: "",
-    residesNearby: "yes",
+    studentName: "",
+    currentClass: "",
+    seekingClass: "",
+    callbackTime: "",
   });
 
   const [utmParams, setUtmParams] = useState({
@@ -53,6 +53,7 @@ export function Hero() {
     try {
       const payload = {
         ...formData,
+        grade: formData.seekingClass,
         ...utmParams,
       };
 
@@ -77,9 +78,25 @@ export function Hero() {
     }
   };
 
+  const classOptions = [
+    "Nursery",
+    "Jr. KG",
+    "Sr. KG",
+    "Grade 1",
+    "Grade 2",
+    "Grade 3",
+    "Grade 4",
+    "Grade 5",
+    "Grade 6",
+    "Grade 7",
+    "Grade 8",
+    "Grade 9",
+    "Grade 10",
+  ];
+
   return (
     <section className="relative w-full border-b border-[#E6E2D8] bg-[#FBF9F5] py-10 lg:py-16 overflow-hidden">
-      {/* Ambient Autoplay Background Video with Directional Light Overlay */}
+      {/* Ambient Autoplay Background Video with Directional Light Overlay & Poster */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         <video
           autoPlay
@@ -87,11 +104,12 @@ export function Hero() {
           muted
           playsInline
           preload="auto"
+          poster="/images/home/admissions-open-hero-banner.jpeg"
           className="w-full h-full object-cover object-center opacity-70"
         >
           <source src="/herovideo.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F5]/90 via-[#FBF9F5]/50 to-[#FBF9F5]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FBF9F5]/92 via-[#FBF9F5]/60 to-[#FBF9F5]/30" />
       </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,245 +118,248 @@ export function Hero() {
           Mobile: Form is explicitly first (order-1), Headline is second (order-2)
           Desktop: Headline on left (lg:order-1), Form on right (lg:order-2)
         */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-16">
-          {/* Left Column (Desktop) / Below Form (Mobile): Compelling Admissions Headline */}
-          <div className="w-full lg:w-5/12 pt-2 lg:pt-8 text-left order-2 lg:order-1">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#555555] font-semibold mb-4">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-14">
+          {/* Left Column: Hero Content with Brand Blue / Dark Palette */}
+          <div className="w-full lg:w-5/12 pt-2 lg:pt-6 text-left order-2 lg:order-1">
+            {/* Pill Badge */}
+            <div className="inline-block bg-[#2A60E4]/10 text-[#2A60E4] border border-[#2A60E4]/20 text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full mb-6">
               {hero.eyebrow}
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-serif font-bold text-[#111111] leading-[1.08] tracking-tight mb-6">
+            {/* Headline */}
+            <h1 className="text-2xl sm:text-4xl lg:text-[50px] font-bold text-[#111111] leading-[1.15] tracking-tight mb-4 sm:mb-6 font-serif">
               {hero.title}
             </h1>
 
-            <p className="text-lg sm:text-xl text-[#555555] font-normal leading-relaxed">
+            {/* Paragraph */}
+            <p className="text-sm sm:text-base lg:text-lg text-[#555555] font-normal leading-relaxed mb-6 sm:mb-8">
               {hero.subtitle}
             </p>
-          </div>
 
-          {/* Right Column (Desktop) / Top (Mobile): The Dark Registration Card */}
-          <div
-            id="lead-form"
-            className="scroll-mt-28 w-full lg:w-7/12 max-w-2xl bg-[#111111] text-white rounded-2xl sm:rounded-3xl p-6 sm:p-9 shadow-2xl border border-[#222222] order-1 lg:order-2"
-          >
-            {/* Header inside card */}
-            <div className="text-center mb-6 sm:mb-8">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-                Student Registration
-              </h2>
-              <p className="text-xs sm:text-sm text-[#AAAAAA] mt-1.5 font-normal">
-                Join the Mount Litera Zee School family for AY 2026–27. Please fill in your details below.
-              </p>
+            {/* Dual CTA Buttons - Brand Blue & Crisp Dark Outline */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 mb-6">
+              <a
+                href={hero.secondaryBtn.href}
+                className="inline-flex items-center justify-center px-5 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white font-bold text-sm sm:text-base shadow-md shadow-[#2A60E4]/30 hover:scale-105 active:scale-95 transition-all text-center"
+              >
+                {hero.secondaryBtn.label}
+              </a>
+
+              <a
+                href={hero.primaryBtn.href}
+                className="inline-flex items-center justify-center px-5 sm:px-6 py-3.5 rounded-xl border-2 border-[#111111] text-[#111111] hover:bg-black/5 font-bold text-sm sm:text-base transition-all text-center"
+              >
+                {hero.primaryBtn.label}
+              </a>
             </div>
 
+            {/* Affiliation / Registration Line */}
+            <p className="text-xs sm:text-sm font-semibold text-[#666666] tracking-wide">
+              {hero.affiliationDetail}
+            </p>
+
+            {/* Wagholi Campus Supporting Visual Card */}
+            <div className="mt-6 sm:mt-8 pt-6 border-t border-[#E6E2D8] flex items-center gap-3.5 sm:gap-4">
+              <div className="relative w-16 h-12 sm:w-24 sm:h-16 rounded-xl overflow-hidden border border-[#E6E2D8] shadow-sm flex-shrink-0 bg-[#F5F2EA]">
+                <Image
+                  src="/images/home/admissions-open-hero-banner.jpeg"
+                  alt="Mount Litera Zee School Wagholi Campus Grounds & Infrastructure"
+                  fill
+                  className="object-cover"
+                  sizes="96px"
+                  unoptimized
+                />
+              </div>
+              <div>
+                <div className="text-[11px] sm:text-xs font-mono font-bold text-[#2A60E4] uppercase tracking-wider">
+                  5-Acre Wagholi Campus
+                </div>
+                <p className="text-xs sm:text-sm text-[#555555] font-medium leading-snug mt-0.5">
+                  Spacious smart classrooms, Olympic sports turf & composite science labs on Nagar Road.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Clean White Form with Brand Blue Accents */}
+          <div
+            id="lead-form"
+            className="scroll-mt-28 w-full lg:w-7/12 max-w-xl bg-white text-[#111111] rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-xl border border-[#E6E2D8] order-1 lg:order-2"
+          >
             {submitted ? (
-              <div className="py-10 text-center space-y-4 animate-fadeIn">
+              <div className="py-8 sm:py-10 text-center space-y-4 animate-fadeIn">
                 <div className="w-14 h-14 rounded-full bg-[#00AD6F]/20 text-[#00AD6F] flex items-center justify-center mx-auto text-2xl font-bold">
                   ✓
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-white">Application Received</h3>
-                <p className="text-sm text-[#CCCCCC] max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-white">{formData.parentName}</strong>. Your registration for <strong className="text-white">{formData.studentName}</strong> ({formData.grade}) has been received with reference <span className="font-mono text-[#2A60E4] font-semibold">{leadId}</span>. Our Wagholi admissions coordinator will call you shortly.
+                <h3 className="text-xl sm:text-2xl font-bold text-[#111111]">Inquiry Received</h3>
+                <p className="text-xs sm:text-sm text-[#555555] max-w-md mx-auto leading-relaxed">
+                  Thank you, <strong className="text-[#111111]">{formData.parentName}</strong>. Your inquiry for <strong className="text-[#111111]">{formData.studentName}</strong> ({formData.seekingClass}) has been received with reference <span className="font-mono text-[#2A60E4] font-bold">{leadId}</span>. Our Wagholi admissions coordinator will call you shortly.
                 </p>
-                <div className="pt-4">
+                <div className="pt-3 sm:pt-4">
                   <button
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
                       setFormData({
-                        studentName: "",
-                        grade: "Nursery",
                         parentName: "",
                         phone: "",
                         email: "",
-                        address: "",
-                        residesNearby: "yes",
+                        studentName: "",
+                        currentClass: "",
+                        seekingClass: "",
+                        callbackTime: "",
                       });
                     }}
-                    className="text-xs text-[#2A60E4] hover:underline"
+                    className="text-xs text-[#2A60E4] font-semibold underline hover:text-[#1E4DC0]"
                   >
-                    Submit another application
+                    Submit another inquiry
                   </button>
                 </div>
               </div>
             ) : (
-              <form suppressHydrationWarning onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <form suppressHydrationWarning onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
                 {errorMessage && (
-                  <div className="p-3 rounded-lg bg-red-900/50 border border-red-500/50 text-xs text-red-200">
+                  <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 font-medium">
                     {errorMessage}
                   </div>
                 )}
 
-                {/* Row 1: Student Name + Class Applying For (Two columns) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                  <div>
-                    <label className="block text-white font-semibold text-xs sm:text-[13px] mb-1.5">
-                      Student Name *
-                    </label>
-                    <input
-                      suppressHydrationWarning
-                      type="text"
-                      required
-                      placeholder="Enter student's full name"
-                      value={formData.studentName}
-                      onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
-                      className="w-full bg-white text-[#111111] placeholder:text-[#888888] px-3.5 py-2.5 sm:py-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2A60E4]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-white font-semibold text-xs sm:text-[13px] mb-1.5">
-                      Class Applying For *
-                    </label>
-                    <select
-                      suppressHydrationWarning
-                      value={formData.grade}
-                      onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
-                      className="w-full bg-white text-[#111111] px-3.5 py-2.5 sm:py-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2A60E4] cursor-pointer"
-                    >
-                      <option value="Nursery">Nursery</option>
-                      <option value="Jr. KG">Jr. KG</option>
-                      <option value="Sr. KG">Sr. KG</option>
-                      <option value="Grade 1">Grade 1</option>
-                      <option value="Grade 2">Grade 2</option>
-                      <option value="Grade 3">Grade 3</option>
-                      <option value="Grade 4">Grade 4</option>
-                      <option value="Grade 5">Grade 5</option>
-                      <option value="Grade 6">Grade 6</option>
-                      <option value="Grade 7">Grade 7</option>
-                      <option value="Grade 8">Grade 8</option>
-                      <option value="Grade 9">Grade 9</option>
-                      <option value="Grade 10">Grade 10</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Row 2: Parent / Guardian Name (Full width) */}
+                {/* Field 1: Parent/Guardian Name* */}
                 <div>
-                  <label className="block text-white font-semibold text-xs sm:text-[13px] mb-1.5">
-                    Parent / Guardian Name *
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Parent/Guardian Name*
                   </label>
                   <input
                     suppressHydrationWarning
                     type="text"
                     required
-                    placeholder="Enter parent or guardian's full name"
                     value={formData.parentName}
                     onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                    className="w-full bg-white text-[#111111] placeholder:text-[#888888] px-3.5 py-2.5 sm:py-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2A60E4]"
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent transition-all"
                   />
                 </div>
 
-                {/* Row 3: Phone Number + Email Address (Two columns) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                  <div>
-                    <label className="block text-white font-semibold text-xs sm:text-[13px] mb-1.5">
-                      Phone Number *
-                    </label>
-                    <input
-                      suppressHydrationWarning
-                      type="tel"
-                      required
-                      placeholder="10-digit mobile number"
-                      pattern="[0-9]{10}"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-white text-[#111111] placeholder:text-[#888888] px-3.5 py-2.5 sm:py-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2A60E4]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-white font-semibold text-xs sm:text-[13px] mb-1.5">
-                      Email Address *
-                    </label>
-                    <input
-                      suppressHydrationWarning
-                      type="email"
-                      required
-                      placeholder="parent@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-white text-[#111111] placeholder:text-[#888888] px-3.5 py-2.5 sm:py-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2A60E4]"
-                    />
-                  </div>
-                </div>
-
-                {/* Row 4: Residential Address (Optional, full width textarea) */}
+                {/* Field 2: Mobile Number* */}
                 <div>
-                  <label className="block text-white font-semibold text-xs sm:text-[13px] mb-1.5">
-                    Residential Address <span className="text-[#888888] font-normal text-xs">(Optional)</span>
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Mobile Number*
                   </label>
-                  <textarea
+                  <input
                     suppressHydrationWarning
-                    rows={2}
-                    placeholder="Society, street name, or area in Pune"
-                    value={formData.address}
-                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full bg-white text-[#111111] placeholder:text-[#888888] px-3.5 py-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2A60E4]"
+                    type="tel"
+                    required
+                    pattern="[0-9]{10}"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent transition-all"
                   />
                 </div>
 
-                {/* Row 5: Wagholi location Yes / No radio */}
-                <div className="pt-1">
-                  <span className="block text-white font-semibold text-xs sm:text-[13px] mb-2">
-                    Do you reside in Wagholi or nearby (Kharadi, Viman Nagar, Keshavnagar)?
-                  </span>
-                  <div className="flex items-center gap-6 text-sm text-white">
-                    <label className="inline-flex items-center gap-2 cursor-pointer">
-                      <input
-                        suppressHydrationWarning
-                        type="radio"
-                        name="residesNearby"
-                        value="yes"
-                        checked={formData.residesNearby === "yes"}
-                        onChange={() => setFormData({ ...formData, residesNearby: "yes" })}
-                        className="accent-[#2A60E4] w-4 h-4 cursor-pointer"
-                      />
-                      <span>Yes</span>
-                    </label>
-
-                    <label className="inline-flex items-center gap-2 cursor-pointer">
-                      <input
-                        suppressHydrationWarning
-                        type="radio"
-                        name="residesNearby"
-                        value="no"
-                        checked={formData.residesNearby === "no"}
-                        onChange={() => setFormData({ ...formData, residesNearby: "no" })}
-                        className="accent-[#2A60E4] w-4 h-4 cursor-pointer"
-                      />
-                      <span>No</span>
-                    </label>
-                  </div>
+                {/* Field 3: Email Address */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Email Address
+                  </label>
+                  <input
+                    suppressHydrationWarning
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent transition-all"
+                  />
                 </div>
 
-                {/* Primary Submit Button */}
+                {/* Field 4: Student Name* */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Student Name*
+                  </label>
+                  <input
+                    suppressHydrationWarning
+                    type="text"
+                    required
+                    value={formData.studentName}
+                    onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent transition-all"
+                  />
+                </div>
+
+                {/* Field 5: Current Class* */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Current Class*
+                  </label>
+                  <select
+                    suppressHydrationWarning
+                    required
+                    value={formData.currentClass}
+                    onChange={(e) => setFormData({ ...formData, currentClass: e.target.value })}
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent cursor-pointer transition-all"
+                  >
+                    <option value="">Select class</option>
+                    {classOptions.map((cls) => (
+                      <option key={cls} value={cls}>
+                        {cls}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Field 6: Class Seeking Admission For* */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Class Seeking Admission For*
+                  </label>
+                  <select
+                    suppressHydrationWarning
+                    required
+                    value={formData.seekingClass}
+                    onChange={(e) => setFormData({ ...formData, seekingClass: e.target.value })}
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent cursor-pointer transition-all"
+                  >
+                    <option value="">Select class</option>
+                    {classOptions.map((cls) => (
+                      <option key={cls} value={cls}>
+                        {cls}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Field 7: Preferred Callback Time */}
+                <div>
+                  <label className="block text-xs sm:text-sm font-bold text-[#111111] mb-1">
+                    Preferred Callback Time
+                  </label>
+                  <select
+                    suppressHydrationWarning
+                    value={formData.callbackTime}
+                    onChange={(e) => setFormData({ ...formData, callbackTime: e.target.value })}
+                    className="w-full bg-white border border-[#D1D5DB] rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#2A60E4] focus:border-transparent cursor-pointer transition-all"
+                  >
+                    <option value="">Select a time</option>
+                    <option value="Morning (9:00 AM – 12:00 PM)">Morning (9:00 AM – 12:00 PM)</option>
+                    <option value="Afternoon (12:00 PM – 3:00 PM)">Afternoon (12:00 PM – 3:00 PM)</option>
+                    <option value="Evening (3:00 PM – 6:00 PM)">Evening (3:00 PM – 6:00 PM)</option>
+                  </select>
+                </div>
+
+                {/* Submit Button - Brand Blue Accent */}
                 <div className="pt-2">
                   <button
                     suppressHydrationWarning
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white font-bold text-base transition-all active:scale-[0.99] disabled:opacity-50 shadow-lg shadow-[#2A60E4]/30 flex items-center justify-center gap-2 group"
+                    className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white font-bold text-sm sm:text-base transition-all active:scale-[0.99] disabled:opacity-50 shadow-md shadow-[#2A60E4]/30 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>{isSubmitting ? "Submitting Application..." : "⚡ Get Admission Now — Register Child"}</span>
-                    {!isSubmitting && (
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    )}
+                    <span>{isSubmitting ? "Submitting Inquiry..." : hero.form.submitLabel}</span>
                   </button>
                 </div>
 
-                {/* Footer Microcopy */}
-                <div className="text-center text-xs text-[#888888] pt-1">
-                  By submitting this form, you agree to our{" "}
-                  <a href="#faq" className="underline text-white hover:text-[#2A60E4]">
-                    Terms & Admission Policy
-                  </a>{" "}
-                  and{" "}
-                  <a href="#faq" className="underline text-white hover:text-[#2A60E4]">
-                    Privacy Notice
-                  </a>
-                  . Wagholi campus desk will reach out via call/WhatsApp.
-                </div>
+                {/* Microcopy */}
+                <p className="text-center text-xs text-[#666666] pt-1">
+                  {hero.form.consent}
+                </p>
               </form>
             )}
           </div>

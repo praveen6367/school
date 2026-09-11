@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Mount Litera Zee School, Wagholi-Pune | Admissions Open 2026–27",
     description:
       "CBSE Affiliated K-12 school in Wagholi, Pune. Book a campus tour and secure your child's seat for AY 2026–27.",
-    images: ["/images/hero.jpg"],
+    images: ["/images/admissions/campus-building-facade.jpeg"],
   },
 };
 
@@ -48,7 +48,7 @@ export default function RootLayout({
       <body suppressHydrationWarning className="min-h-screen bg-[#FBF9F5] text-[#111111] font-sans antialiased flex flex-col">
         <TopBanner />
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-28 sm:pb-36 overflow-x-hidden">{children}</main>
         <Footer />
         <StickyCtaBar />
       </body>
