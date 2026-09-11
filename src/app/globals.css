@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primer-bg: #FBF9F5;
+  --color-primer-surface: #FFFFFF;
+  --color-primer-ink: #111111;
+  --color-primer-muted: #555555;
+  --color-primer-border: #E6E2D8;
+  
+  --color-primer-yellow: #F6D358;
+  --color-primer-blue: #2A60E4;
+  --color-primer-orange: #EA580C;
+  --color-primer-green: #15803D;
+
+  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --primer-bg: #FBF9F5;
+  --primer-ink: #111111;
+  --primer-border: #E6E2D8;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--primer-bg);
+  color: var(--primer-ink);
+}
+
+body {
+  background-color: #FBF9F5;
+  color: #111111;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hairline borders */
+.border-primer {
+  border-color: #E6E2D8;
+}
+
+.h-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #E6E2D8;
+}
+
+.v-divider {
+  width: 1px;
+  height: 100%;
+  background-color: #E6E2D8;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
