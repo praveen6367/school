@@ -14,16 +14,16 @@ export const siteContent = {
     tagline: "Great School. Great Future.",
     claim: "CBSE Affiliation No. 1131377",
     campus: "Wagholi, Pune",
-    phone: "+91 91759 88998",
-    alternatePhone: "+91 91759 88999",
-    email: "admissions.wagholi@mountlitera.com",
+    phone: "+91 9175122265",
+    alternatePhone: "+91 9175122295",
+    email: "info@mountliterazeepune.com",
     address: "Gat No. 921/922, Nagar Road, Wagholi, Pune 412207",
   },
 
   // 1. Top Utility Bar
   topUtilityBar: {
     text: "MID-TERM ADMISSIONS OPEN | ALL GRADES",
-    helpline: "+91 91759 88998",
+    helpline: "+91 9175122265",
     buttonLabel: "Register Now",
   },
 
@@ -31,7 +31,7 @@ export const siteContent = {
   navigation: {
     links: [] as NavItem[],
     actions: {
-      call: { label: "Call Us", phone: "+91 91759 88998", href: "tel:+919175988998" },
+      call: { label: "Call Us", phone: "+91 9175122265", href: "tel:+919175122265" },
       apply: { label: "Enquire Now", href: "#lead-form" },
     },
   },
@@ -138,8 +138,8 @@ export const siteContent = {
   // 7. Dark "Campus Spaces" Section
   campusSpaces: {
     heading: "A Space to Learn, Play & Create",
-    subtitle: "Our 5-acre campus in Wagholi is purposefully designed to give children room to move, think, collaborate, and compete.",
-    statLine: "5-Acre Holistic Green Campus · Nagar Road, Wagholi, Pune",
+    subtitle: "Spread over 1,00,000 sq.ft., our campus in Wagholi is purposefully designed to give children room to move, think, collaborate, and compete.",
+    statLine: "Spread over 1,00,000 sq.ft. Holistic Green Campus · Nagar Road, Wagholi, Pune",
     zones: [
       {
         title: "Learning Spaces",
@@ -167,7 +167,7 @@ export const siteContent = {
       },
     ],
     image: "/images/about-us/campus-overview-aerial.jpeg",
-    imageAlt: "Aerial view of Mount Litera Zee School 5-acre purpose-built academic and sports campus in Wagholi, Pune",
+    imageAlt: "Aerial view of Mount Litera Zee School campus spread over 1,00,000 sq.ft. in Wagholi, Pune",
   },
 
   // 8. "Beyond Academics" Section
@@ -252,7 +252,7 @@ export const siteContent = {
         description: "Daily dedicated sports period, performing arts, and life skills given equal standing alongside academic coursework.",
       },
       {
-        title: "Expansive 5-Acre Campus",
+        title: "Campus Spread Over 1,00,000 Sq.Ft.",
         description: "Unmatched open grounds, green flora, regulation sports turf, and modern laboratories located centrally on Nagar Road.",
       },
       {
@@ -353,7 +353,7 @@ export const siteContent = {
     description:
       "Mid-term and academic year 2026–27 admissions are currently open across Nursery to Grade 10. Connect with our Wagholi campus team today.",
     primaryBtn: { label: "Enquire for Admission", href: "#lead-form" },
-    secondaryBtn: { label: "Call the Admissions Team", href: "tel:+919175988998" },
+    secondaryBtn: { label: "Call: +91 9175122265", href: "tel:+919175122265" },
   },
 
   // 14. FAQ Accordion (Updated 6 client questions)
@@ -386,7 +386,7 @@ export const siteContent = {
     {
       question: "How do I make an enquiry or speak to the admissions office directly?",
       answer:
-        "You can fill out the enquiry form on this page, or call our direct admissions helpline at +91 91759 88998 / +91 91759 88999 from 8:30 AM to 5:00 PM.",
+        "You can fill out the enquiry form on this page, or call our direct admissions helpline at +91 9175122265 / +91 9175122295 from 8:30 AM to 5:00 PM.",
     },
   ],
 

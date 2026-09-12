@@ -192,7 +192,7 @@ export function Hero() {
               </div>
               <div>
                 <div className="text-[11px] sm:text-xs font-mono font-bold text-[#2A60E4] uppercase tracking-wider">
-                  5-Acre Wagholi Campus
+                  Spread over 1,00,000 sq.ft.
                 </div>
                 <p className="text-xs sm:text-sm text-[#555555] font-medium leading-snug mt-0.5">
                   Spacious smart classrooms, Olympic sports turf & composite science labs on Nagar Road.

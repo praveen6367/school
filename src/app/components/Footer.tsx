@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -32,8 +34,14 @@ export function Footer() {
           </div>
 
           <a
-            href={footer.visitButton.href}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#2A60E4] hover:bg-[#1E4DC0] text-white font-bold text-sm transition-all shadow-md shadow-[#2A60E4]/30 hover:scale-105 active:scale-95 text-center flex-shrink-0"
+            href="#lead-form"
+            onClick={(e) => {
+              e.preventDefault();
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("open-lead-modal"));
+              }
+            }}
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#2A60E4] hover:bg-[#1E4DC0] text-white font-bold text-sm transition-all shadow-md shadow-[#2A60E4]/30 hover:scale-105 active:scale-95 text-center flex-shrink-0 cursor-pointer"
           >
             {footer.visitButton.label}
           </a>
@@ -84,14 +92,14 @@ export function Footer() {
             <ul className="space-y-2 text-xs sm:text-sm text-[#AAAAAA]">
               <li>
                 <span className="text-[#666666] block text-xs">Direct Helpline:</span>
-                <a href="tel:+919175988998" className="hover:text-white font-medium text-white">
-                  +91 91759 88998
+                <a href="tel:+919175122265" className="hover:text-white font-medium text-white">
+                  +91 9175122265
                 </a>
               </li>
               <li>
                 <span className="text-[#666666] block text-xs">Alternate:</span>
-                <a href="tel:+919175988999" className="hover:text-white font-medium text-white">
-                  +91 91759 88999
+                <a href="tel:+919175122295" className="hover:text-white font-medium text-white">
+                  +91 9175122295
                 </a>
               </li>
               <li>

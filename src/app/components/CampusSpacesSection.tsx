@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { siteContent } from "../content";
@@ -51,25 +53,48 @@ export function CampusSpacesSection() {
           ))}
         </div>
 
-        {/* 5-Acre Campus Panoramic Aerial Showcase */}
-        <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full rounded-2xl overflow-hidden border border-[#2A2A2A] bg-[#1A1A1A] shadow-lg">
+        {/* Spread over 1,00,000 sq.ft. Panoramic Aerial Showcase */}
+        <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full rounded-2xl overflow-hidden border border-[#2A2A2A] bg-[#1A1A1A] shadow-lg mb-8">
           <Image
             src={campusSpaces.image}
-            alt={(campusSpaces as any).imageAlt || "Mount Litera Wagholi 5-Acre Campus Spaces"}
+            alt={(campusSpaces as any).imageAlt || "Mount Litera Wagholi 1,00,000 sq.ft. Campus Spaces"}
             fill
             className="object-cover"
             sizes="(max-width: 1440px) 100vw, 1440px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-4 sm:p-8 lg:p-10">
-            <div className="text-white">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex items-end p-4 sm:p-8 lg:p-10">
+            <div className="text-white max-w-2xl">
               <p className="text-[10px] sm:text-xs font-mono text-[#FED933] font-semibold uppercase tracking-wider mb-1">
                 Wagholi Campus Infrastructure
               </p>
               <h4 className="text-base sm:text-xl lg:text-2xl font-serif font-bold text-white leading-snug">
-                5-Acre Purpose-Built Academic & Sports Campus · Nagar Road, Pune
+                Spread over 1,00,000 sq.ft. Purpose-Built Academic & Sports Campus · Nagar Road, Pune
               </h4>
             </div>
           </div>
+        </div>
+
+        {/* Section CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2">
+          <a
+            href="#lead-form"
+            onClick={(e) => {
+              e.preventDefault();
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("open-lead-modal"));
+              }
+            }}
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#2A60E4] hover:bg-[#1E4DC0] text-white font-bold text-sm transition-all shadow-md shadow-[#2A60E4]/30 hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            Book a Campus Walkthrough
+          </a>
+
+          <a
+            href="tel:+919175122265"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/10 font-semibold text-sm transition-all"
+          >
+            Call Admissions: +91 9175122265
+          </a>
         </div>
       </div>
     </section>

@@ -34,21 +34,32 @@ export function Navbar() {
         {/* Right: Clean Actions (Compact Call link/icon + Enquire Now button) */}
         <div className="flex items-center gap-2 sm:gap-5 flex-shrink-0">
           <a
-            href="tel:+919175988998"
+            href="tel:+919175122265"
             className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#111111] hover:text-[#2A60E4] transition-colors p-1.5 sm:p-0 rounded-full"
-            aria-label="Call admissions helpline at +91 91759 88998"
+            aria-label="Call admissions helpline at +91 9175122265"
           >
             <div className="w-8 h-8 sm:w-auto sm:h-auto rounded-full bg-[#2A60E4]/10 sm:bg-transparent flex items-center justify-center text-[#2A60E4]">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
             </div>
-            <span className="hidden sm:inline">Call Us: +91 91759 88998</span>
+            <span className="hidden sm:inline">Call Us: +91 9175122265</span>
           </a>
 
           <a
             href="#lead-form"
-            className="inline-flex items-center justify-center bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-md shadow-[#2A60E4]/30 whitespace-nowrap"
+            onClick={(e) => {
+              if (window.innerWidth >= 768) {
+                // on desktop if scrolled past hero, open modal
+                if (window.scrollY > 800) {
+                  e.preventDefault();
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("open-lead-modal"));
+                  }
+                }
+              }
+            }}
+            className="inline-flex items-center justify-center bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-md shadow-[#2A60E4]/30 whitespace-nowrap cursor-pointer"
           >
             Enquire Now
           </a>

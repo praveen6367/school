@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { siteContent } from "../content";
+import { openAdmissionModal } from "../utils/modal";
 
 export function FaqSection() {
   const { faqs } = siteContent;
@@ -23,7 +24,7 @@ export function FaqSection() {
             </h2>
 
             {/* FAQ Accordion List */}
-            <div className="border-t border-[#E6E2D8] divide-y divide-[#E6E2D8]">
+            <div className="border-t border-[#E6E2D8] divide-y divide-[#E6E2D8] mb-8 sm:mb-10">
               {faqs.map((faq, idx) => {
                 const isOpen = openIndex === idx;
                 return (
@@ -52,10 +53,46 @@ export function FaqSection() {
                 );
               })}
             </div>
+
+            {/* Additional FAQ Help Callout */}
+            <div className="p-6 rounded-2xl bg-white border border-[#E6E2D8] shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="font-serif font-bold text-base sm:text-lg text-[#111111]">
+                  Still have a question?
+                </h3>
+                <p className="text-xs sm:text-sm text-[#666666] mt-0.5">
+                  Call us directly or submit your enquiry for an instant callback.
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-[#333333]">
+                  <a href="tel:+919175122265" className="font-bold text-[#2A60E4] hover:underline">
+                    +91 9175122265
+                  </a>
+                  <span>•</span>
+                  <a href="tel:+919175122295" className="font-bold text-[#2A60E4] hover:underline">
+                    +91 9175122295
+                  </a>
+                  <span>•</span>
+                  <a href="mailto:info@mountliterazeepune.com" className="text-[#555555] hover:text-[#111111]">
+                    info@mountliterazeepune.com
+                  </a>
+                </div>
+              </div>
+
+              <a
+                href="#lead-form"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openAdmissionModal();
+                }}
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#2A60E4]/30 hover:scale-105 active:scale-95 transition-all text-center flex-shrink-0 cursor-pointer"
+              >
+                Ask Admissions Team
+              </a>
+            </div>
           </div>
 
           {/* Right Column: Campus Photography */}
-          <div className="lg:col-span-5 lg:pt-2">
+          <div className="lg:col-span-5 lg:pt-2 space-y-5">
             <div className="relative aspect-[4/3] sm:aspect-[4/5] w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E6E2D8] bg-[#EAE6DD] shadow-sm">
               <Image
                 src="/images/admissions/campus-building-facade.jpeg"
@@ -64,6 +101,26 @@ export function FaqSection() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
+            </div>
+
+            {/* Quick Consultation Pill */}
+            <div className="p-5 rounded-2xl bg-white border border-[#E6E2D8] shadow-sm text-center">
+              <p className="text-xs font-mono font-bold text-[#2A60E4] uppercase tracking-wider mb-1">
+                Wagholi Campus Desk
+              </p>
+              <h4 className="font-serif font-bold text-base text-[#111111] mb-2">
+                Need Help with Grade Eligibility?
+              </h4>
+              <p className="text-xs text-[#666666] mb-4">
+                Our admissions counselors assist with age criteria, bus routes, and mid-term transfer formalities.
+              </p>
+              <button
+                type="button"
+                onClick={() => openAdmissionModal()}
+                className="w-full py-2.5 rounded-full bg-[#111111] hover:bg-black text-[#FBF9F5] text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
+              >
+                Enquire for Admission
+              </button>
             </div>
           </div>
         </div>
