@@ -32,6 +32,13 @@ export const metadata: Metadata = {
       "CBSE Affiliated K-12 school in Wagholi, Pune. Book a campus tour and secure your child's seat for AY 2026–27.",
     images: ["/images/admissions/campus-building-facade.jpeg"],
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export const viewport: Viewport = {

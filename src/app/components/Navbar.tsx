@@ -13,7 +13,13 @@ export function Navbar() {
       <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: School Logo & Clean Affiliation Line */}
         <div className="flex items-center gap-2 sm:gap-6 min-w-0">
-          <Link href="/" className="flex items-center group py-1 flex-shrink-0">
+          <a
+            href={brand.website || "https://mountliterazeepune.com"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center group py-1 flex-shrink-0 hover:opacity-90 transition-opacity"
+            title="Mount Litera Zee School Wagholi - Main Website (mountliterazeepune.com)"
+          >
             <Image
               src="/Logo-dark.png"
               alt="Mount Litera Zee School Wagholi-Pune"
@@ -22,7 +28,7 @@ export function Navbar() {
               className="h-8 sm:h-12 w-auto object-contain"
               priority
             />
-          </Link>
+          </a>
 
           <div className="hidden lg:block pl-4 border-l border-[#E6E2D8]">
             <p className="text-xs text-[#555555] font-medium tracking-tight">

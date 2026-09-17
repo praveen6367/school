@@ -51,7 +51,13 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-12">
           {/* Brand & Address */}
           <div className="lg:col-span-6 space-y-4">
-            <Link href="/" className="inline-block py-1">
+            <a
+              href={brand.website || "https://mountliterazeepune.com"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block py-1 hover:opacity-90 transition-opacity"
+              title="Visit Mount Litera Zee School Wagholi - Main Website (mountliterazeepune.com)"
+            >
               <Image
                 src="/Logo-white.png"
                 alt="Mount Litera Zee School Wagholi-Pune"
@@ -59,7 +65,7 @@ export function Footer() {
                 height={73}
                 className="h-11 sm:h-12 w-auto object-contain"
               />
-            </Link>
+            </a>
 
             <p className="text-sm text-[#AAAAAA] max-w-md leading-relaxed">
               {footer.affiliation}
@@ -68,6 +74,21 @@ export function Footer() {
             <p className="text-xs sm:text-sm text-[#888888] max-w-md leading-relaxed">
               {brand.address}
             </p>
+
+            <div className="pt-1">
+              <a
+                href={brand.website || "https://mountliterazeepune.com"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[#4E82EE] hover:text-[#7CA6FF] font-medium transition-colors"
+              >
+                <svg className="w-4 h-4 text-[#4E82EE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                <span>mountliterazeepune.com</span>
+                <span className="text-xs">↗</span>
+              </a>
+            </div>
           </div>
 
           {/* Quick Links & Admissions Helpline */}
@@ -108,6 +129,18 @@ export function Footer() {
                   {brand.email}
                 </a>
               </li>
+              <li>
+                <span className="text-[#666666] block text-xs">Official Website:</span>
+                <a
+                  href={brand.website || "https://mountliterazeepune.com"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white text-white font-medium inline-flex items-center gap-1"
+                >
+                  mountliterazeepune.com
+                  <span className="text-xs text-[#4E82EE]">↗</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -117,7 +150,12 @@ export function Footer() {
           <div>{footer.copyright}</div>
           <div className="flex flex-wrap items-center gap-5">
             {footer.legalLinks.map((item) => (
-              <a key={item.label} href={item.href} className="hover:text-white transition-colors">
+              <a
+                key={item.label}
+                href={item.href}
+                {...(item.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="hover:text-white transition-colors"
+              >
                 {item.label}
               </a>
             ))}

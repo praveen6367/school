@@ -17,6 +17,8 @@ export const siteContent = {
     phone: "+91 9175122265",
     alternatePhone: "+91 9175122295",
     email: "info@mountliterazeepune.com",
+    website: "https://mountliterazeepune.com",
+    websiteDisplay: "mountliterazeepune.com",
     address: "Gat No. 921/922, Nagar Road, Wagholi, Pune 412207",
   },
 
@@ -399,6 +401,7 @@ export const siteContent = {
     copyright: `© ${new Date().getFullYear()} Mount Litera Zee School, Wagholi-Pune.`,
     affiliation: "CBSE Affiliation No. 1130765 • School Code: 30722",
     legalLinks: [
+      { label: "Main Website: mountliterazeepune.com", href: "https://mountliterazeepune.com" },
       { label: "Admissions Policy", href: "#admission-steps" },
       { label: "Curriculum Details", href: "#academics" },
       { label: "Mandatory Public Disclosure", href: "#faq" },
