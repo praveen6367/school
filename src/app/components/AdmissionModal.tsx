@@ -135,6 +135,7 @@ export function AdmissionModal() {
       >
         {/* Close Button */}
         <button
+          suppressHydrationWarning
           type="button"
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 rounded-full bg-[#F3F4F6] hover:bg-[#E5E7EB] text-[#4B5563] hover:text-[#111111] flex items-center justify-center transition-colors cursor-pointer"
@@ -156,6 +157,7 @@ export function AdmissionModal() {
             </p>
             <div className="pt-3">
               <button
+                suppressHydrationWarning
                 type="button"
                 onClick={() => setIsOpen(false)}
                 className="px-6 py-2.5 rounded-full bg-[#2A60E4] text-white text-xs font-bold hover:bg-[#1E4DC0] transition-colors"
@@ -316,6 +318,7 @@ export function AdmissionModal() {
               {/* Submit Button */}
               <div className="pt-2">
                 <button
+                  suppressHydrationWarning
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-[#2A60E4] to-[#1D4ED8] hover:from-[#1E4DC0] hover:to-[#172554] text-white font-bold text-sm sm:text-base transition-all active:scale-[0.99] disabled:opacity-50 shadow-md shadow-[#2A60E4]/30 flex items-center justify-center gap-2 cursor-pointer"

@@ -115,6 +115,7 @@ export function FaqSection() {
                 Our admissions counselors assist with age criteria, bus routes, and mid-term transfer formalities.
               </p>
               <button
+                suppressHydrationWarning
                 type="button"
                 onClick={() => openAdmissionModal()}
                 className="w-full py-2.5 rounded-full bg-[#111111] hover:bg-black text-[#FBF9F5] text-xs font-semibold transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"

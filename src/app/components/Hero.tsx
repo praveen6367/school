@@ -217,6 +217,7 @@ export function Hero() {
                 </p>
                 <div className="pt-3 sm:pt-4">
                   <button
+                    suppressHydrationWarning
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
