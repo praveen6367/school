@@ -19,7 +19,7 @@ export const siteContent = {
     email: "info@mountliterazeepune.com",
     website: "https://mountliterazeepune.com",
     websiteDisplay: "mountliterazeepune.com",
-    address: "Gat No. 921/922, Nagar Road, Wagholi, Pune 412207",
+    address: "Gat No 886, Ganga Hillshire, Kesnand Rd.",
   },
 
   // 1. Top Utility Bar
@@ -141,7 +141,7 @@ export const siteContent = {
   campusSpaces: {
     heading: "A Space to Learn, Play & Create",
     subtitle: "Spread over 1,00,000 sq.ft., our campus in Wagholi is purposefully designed to give children room to move, think, collaborate, and compete.",
-    statLine: "Spread over 1,00,000 sq.ft. Holistic Green Campus · Nagar Road, Wagholi, Pune",
+    statLine: "Spread over 1,00,000 sq.ft. Holistic Green Campus · Kesnand Road, Wagholi, Pune",
     zones: [
       {
         title: "Learning Spaces",
@@ -159,7 +159,7 @@ export const siteContent = {
         title: "Sports & Play Spaces",
         description: "Regulation football turf, basketball court, skating rink, running track, and shaded pre-primary play areas.",
         image: "/images/secondary/secondary-senior-wing-lab.jpg",
-        alt: "Regulation green sports turf and outdoor physical education grounds on Nagar Road",
+        alt: "Regulation green sports turf and outdoor physical education grounds on Kesnand Road",
       },
       {
         title: "Arts & Creative Spaces",
@@ -255,7 +255,7 @@ export const siteContent = {
       },
       {
         title: "Campus Spread Over 1,00,000 Sq.Ft.",
-        description: "Unmatched open grounds, green flora, regulation sports turf, and modern laboratories located centrally on Nagar Road.",
+        description: "Unmatched open grounds, green flora, regulation sports turf, and modern laboratories located on Kesnand Road, Wagholi.",
       },
       {
         title: "Pan-India Network Legacy",

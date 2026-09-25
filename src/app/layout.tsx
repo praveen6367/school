@@ -54,6 +54,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${serifFont.variable} ${sansFont.variable} scroll-smooth`}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-433960391" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-433960391');
+            `,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning className="min-h-screen bg-[#FBF9F5] text-[#111111] font-sans antialiased flex flex-col">
         <TopBanner />
         <Navbar />

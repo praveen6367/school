@@ -71,6 +71,9 @@ export function Hero() {
 
       setLeadId(data.leadId);
       setSubmitted(true);
+      setTimeout(() => {
+        window.location.href = `/thank-you?leadId=${encodeURIComponent(data.leadId)}&name=${encodeURIComponent(formData.parentName)}`;
+      }, 1200);
     } catch (err: unknown) {
       setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please check your details.");
     } finally {
@@ -95,37 +98,49 @@ export function Hero() {
   ];
 
   const [loadVideo, setLoadVideo] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Only load background video on desktop screens (>= 768px) and after the page has rendered
+    // Start loading background video immediately on desktop screens (>= 768px)
     if (typeof window !== "undefined" && window.innerWidth >= 768) {
-      const timer = setTimeout(() => {
-        setLoadVideo(true);
-      }, 1200);
-      return () => clearTimeout(timer);
+      setLoadVideo(true);
     }
   }, []);
 
   return (
     <section className="relative w-full border-b border-[#E6E2D8] bg-[#FBF9F5] py-10 lg:py-16 overflow-hidden">
-      {/* Optimized Hero Visual Background (Preloaded WebP/AVIF Poster + Deferred Desktop Video) */}
+      {/* Optimized Hero Visual Background (Preloaded Poster Fallback + Desktop Video) */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        {/* Fallback image: visible initially or when video is not playing, hidden once video plays */}
         <Image
           src="/images/home/admissions-open-hero-banner.jpeg"
           alt="Mount Litera Zee School Wagholi Campus"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-70"
+          className={`object-cover object-center transition-opacity duration-700 ${
+            isVideoPlaying ? "opacity-0" : "opacity-70"
+          }`}
         />
         {loadVideo && (
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            preload="none"
-            className="hidden md:block absolute inset-0 w-full h-full object-cover object-center opacity-70 transition-opacity duration-1000"
+            preload="auto"
+            onPlay={() => setIsVideoPlaying(true)}
+            onPlaying={() => setIsVideoPlaying(true)}
+            onTimeUpdate={(e) => {
+              if (e.currentTarget.currentTime > 0.1 && !isVideoPlaying) {
+                setIsVideoPlaying(true);
+              }
+            }}
+            className={`hidden md:block absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+              isVideoPlaying ? "opacity-75" : "opacity-0"
+            }`}
           >
             <source src="/herovideo.mp4" type="video/mp4" />
           </video>
@@ -195,7 +210,7 @@ export function Hero() {
                   Spread over 1,00,000 sq.ft.
                 </div>
                 <p className="text-xs sm:text-sm text-[#555555] font-medium leading-snug mt-0.5">
-                  Spacious smart classrooms, Olympic sports turf & composite science labs on Nagar Road.
+                  Spacious smart classrooms, Olympic sports turf & composite science labs on Kesnand Road.
                 </p>
               </div>
             </div>

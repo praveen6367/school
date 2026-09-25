@@ -68,7 +68,7 @@ export function CampusSpacesSection() {
                 Wagholi Campus Infrastructure
               </p>
               <h4 className="text-base sm:text-xl lg:text-2xl font-serif font-bold text-white leading-snug">
-                Spread over 1,00,000 sq.ft. Purpose-Built Academic & Sports Campus · Nagar Road, Pune
+                Spread over 1,00,000 sq.ft. Purpose-Built Academic & Sports Campus · Kesnand Road, Wagholi, Pune
               </h4>
             </div>
           </div>

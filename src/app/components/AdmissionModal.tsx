@@ -96,6 +96,9 @@ export function AdmissionModal() {
 
       setLeadId(data.leadId);
       setSubmitted(true);
+      setTimeout(() => {
+        window.location.href = `/thank-you?leadId=${encodeURIComponent(data.leadId)}&name=${encodeURIComponent(formData.parentName)}`;
+      }, 1200);
     } catch (err: unknown) {
       setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please check your details.");
     } finally {
@@ -176,7 +179,7 @@ export function AdmissionModal() {
                 Enquire for Admission
               </h2>
               <p className="text-xs sm:text-sm text-[#666666] mt-1">
-                Mount Litera Zee School, Wagholi · Nagar Road, Pune
+                Mount Litera Zee School, Wagholi · Kesnand Road, Pune
               </p>
               <div className="flex flex-wrap items-center gap-2 text-xs text-[#555555] mt-2 pt-2 border-t border-[#F0ECE1]">
                 <span>Prefer to call?</span>
