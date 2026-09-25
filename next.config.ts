@@ -35,6 +35,11 @@ const nextConfig: NextConfig = {
         destination: "/#faq",
         permanent: false,
       },
+      {
+        source: "/thank-you",
+        destination: "/thankyou",
+        permanent: false,
+      },
     ];
   },
 };

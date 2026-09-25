@@ -94,14 +94,10 @@ export function AdmissionModal() {
         throw new Error(data.error || "Submission failed. Please try again.");
       }
 
-      setLeadId(data.leadId);
-      setSubmitted(true);
-      setTimeout(() => {
-        window.location.href = `/thank-you?leadId=${encodeURIComponent(data.leadId)}&name=${encodeURIComponent(formData.parentName)}`;
-      }, 1200);
+      // Proper full page load redirect to /thankyou
+      window.location.href = "/thankyou";
     } catch (err: unknown) {
       setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please check your details.");
-    } finally {
       setIsSubmitting(false);
     }
   };
